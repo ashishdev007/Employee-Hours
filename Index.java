@@ -16,7 +16,7 @@ public class Index{
                 while (departments.next()){
 
                     String dName = departments.getString("Dname");
-                    int dNumber = Integer.parseInt(departments.getString("Dnumber").trim());
+                    int dNumber = departments.getInt("Dnumber");
                     
                     System.out.print("\n" + dName);
 
