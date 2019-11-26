@@ -29,7 +29,7 @@ public class Index{
                         noOfEmp++;
 
                         String empName = employees.getString("Fname") + " " + employees.getString("Lname");
-                        int empSsn = Integer.parseInt(employees.getString("Ssn").trim());
+                        int empSsn = employees.getInt("Ssn");
                         float empHrs = 0;
                 
                         System.out.printf("\n\n%2s%s","", empName);
@@ -44,7 +44,7 @@ public class Index{
                             float work_hrs;
 
                             try{
-                                work_hrs = Float.parseFloat(contributions.getString("Hours"));
+                                work_hrs = contributions.getFloat("Hours");
                             }
                             catch(NullPointerException e){
                                 work_hrs = 0;
