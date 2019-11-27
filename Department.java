@@ -12,6 +12,7 @@ public class Department {
         this.dname = dname;
         this.dnumber = dnumber;
         initializeEmployees();
+        initializeEmployees();
     }
 
     private void initializeEmployees() {
@@ -28,12 +29,15 @@ public class Department {
         try {
 
             while (employeesSet.next()) {
-                employees.add(new Employee(employeesSet.getString("Fname"), employeesSet.getString("Lname"), employeesSet.getString("Lname"), employeesSet.getInt("Ssn")));
+                employees.add(new Employee(employeesSet.getString("Fname"), employeesSet.getString("Minit"), employeesSet.getString("Lname"), employeesSet.getInt("Ssn")));
             }
 
         } catch (SQLException e) {
             System.out.println("Couldn't initilaize employees in Department");
             e.printStackTrace();
         }
+
+        iconnect.cConnection(connection);
     }
+
 }
