@@ -41,10 +41,13 @@ public class Department {
 
     public String getEmployeeHrs(){
 
+
         StringBuilder sb = new StringBuilder();
 
+        sb.append("\n" + this.dname);
+
         for (Employee employee : employees) {
-            sb.append(employee.getHours());
+            sb.append(employee.getHoursBreakdown());
         }
 
         return sb.toString();

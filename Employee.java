@@ -28,13 +28,62 @@ public class Employee{
         try {
 
             while (projectSet.next()) {
-                this.projects.add(new Project(projectSet.getString("Pname"), projectSet.getInt("Pnumber"), projectSet.getFloat("Hours")));
+                double work_hrs;
+
+                try{
+                    work_hrs = projectSet.getDouble("Hours");
+                }
+                catch(NullPointerException e){
+                    work_hrs = 0.0;
+                }
+
+                this.projects.add(new Project(projectSet.getString("Pname"), projectSet.getInt("Pnumber"), work_hrs));
             }
 
         } catch (SQLException e) {
             System.out.println("Couldn't initilaize projects in Employee");
             e.printStackTrace();
         }
+    }
+
+    public double getTotalHrs(){
+        double total = 0.0;
+
+        for (Project project : projects) {
+            total += project.getHours();
+        }
+
+        return total;
+    }
+
+    //Sort the employees by Lname
+
+    public String getHoursBreakdown(){
+
+        StringBuilder sb = new StringBuilder();
+
+        String empName = this.fName + " " + this.lName;
+        sb.append(String.format("\n\n%2s%s","", empName));
+
+        for (Project project : projects) {
+            sb.append(String.format("\n%5s%-30s%4.1f", "", project.getName(), project.getHours()));
+        }
+
+        double empHrs = this.getTotalHrs();
+
+        if(empHrs != 0.0){
+
+            String temp =  String.format("%.1f", empHrs);
+
+            System.out.printf("\n%35s", "");
+            for (int i = 0; i < temp.length(); i++) {
+                System.out.print("-");
+            }
+
+            System.out.printf("\n%35s%4.1f", "", empHrs);  
+        } 
+
+        return sb.toString();
     }
 
     public int compareTo(Employee e){

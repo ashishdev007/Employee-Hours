@@ -5,9 +5,9 @@ import java.sql.*;
 public class Project {
     private int pNo;
     private String pName;
-    private float hours;
+    private double hours;
 
-    public Project(String pName, int pNo, float hours) {
+    public Project(String pName, int pNo, double hours) {
 
         this.pName = pName;
         this.pNo = pNo;
@@ -18,7 +18,7 @@ public class Project {
         return this.pName;
     }
 
-    public float hours(){
+    public double getHours(){
         return this.hours;
     }
 }
