@@ -39,4 +39,16 @@ public class Department {
         iconnect.cConnection(connection);
     }
 
+    public String getEmployeeHrs(){
+
+        StringBuilder sb = new StringBuilder();
+
+        for (Employee employee : employees) {
+            sb.append(employee.getHours());
+        }
+
+        return sb.toString();
+        // printf("\n\n%2s%s","", empName);
+    }
+
 }
