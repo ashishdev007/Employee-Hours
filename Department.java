@@ -15,6 +15,17 @@ public class Department {
         initializeEmployees();
     }
 
+    public double getTotalHrs(){
+
+        double total = 0.0;
+
+        for (Employee employee : employees) {
+            total += employee.getTotalHrs();
+        }
+
+        return total;
+    }
+
     private void initializeEmployees() {
 
         MakeConnection iconnect = new MakeConnection("deva.txt");
@@ -41,7 +52,6 @@ public class Department {
 
     public String getEmployeeHrs(){
 
-
         StringBuilder sb = new StringBuilder();
 
         sb.append("\n" + this.dname);
@@ -49,6 +59,9 @@ public class Department {
         for (Employee employee : employees) {
             sb.append(employee.getHoursBreakdown());
         }
+
+        sb.append(String.format("\n\n%-7s%d Employee", "Total: ", this.employees.size()));
+        sb.append(String.format("\n%-7s%-4.1f Hours", "", this.getTotalHrs()));
 
         return sb.toString();
         // printf("\n\n%2s%s","", empName);
