@@ -28,7 +28,7 @@ public class Employee{
         try {
 
             while (projectSet.next()) {
-                // this.projects.add(new Project(projectSet.getString("Pname"), projectSet.getInt("Pnumber"), projectSet.getInt("Dnum")));
+                this.projects.add(new Project(projectSet.getString("Pname"), projectSet.getInt("Pnumber"), projectSet.getFloat("Hours")));
             }
 
         } catch (SQLException e) {

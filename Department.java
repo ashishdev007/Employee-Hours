@@ -21,8 +21,7 @@ public class Department {
         Connection connection = iconnect.gConnection();
 
         ResultSet employeesSet = new QueryParser(connection)
-                .getResult(("SELECT Fname, Lname, Ssn FROM EMPLOYEE JOIN DEPARTMENT ON Dno = Dnumber WHERE Dno = "
-                        + this.dnumber));
+                .getResult(("SELECT * FROM EMPLOYEE JOIN DEPARTMENT ON Dno = Dnumber WHERE Dno = " + this.dnumber));
 
         employees = new ArrayList<>();
 
